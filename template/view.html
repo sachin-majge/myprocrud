@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table,td,tr,th{
+            border: 2px solid black;
+            border-collapse: collapse;
+            width: auto;
+            height: 50px;
+        }
+        td{
+            width: 50px;
+        }
+        a{
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <table>
+        <tr>
+            <th>id</th>
+            <th>name</th>
+            <th>age</th>
+            <th>photo</th>
+            <th>action</th>
+        </tr>
+        {% for i in data %}
+        <tr>
+            <td>{{ i.id }}</td>
+            <td>{{ i.name }}</td>
+            <td>{{ i.age }}</td>
+            <td><img src="{{ i.photo.url }}" alt="hello" width="50px" height="50px"></td>
+            <td><button type="button" style="background-color:blue; color: white;"    ><a href="{% url 'myapp:update' i.id %}" style="color: white;">update</a></button></td>
+            <td><button type="button" style="background-color:red; color: white;"><a href="{% url 'myapp:delete' i.id %}" style="color: white;">delete</a></button></td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
